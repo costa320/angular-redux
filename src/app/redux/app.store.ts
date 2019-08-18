@@ -15,15 +15,15 @@ import logger from "redux-logger";
 
 export const AppStore = new InjectionToken("App.store");
 
-const devtools: StoreEnhancer<AppState> = window["devToolsExtension"]
-  ? window["devToolsExtension"]()
+const devtools: StoreEnhancer<AppState> = window["__REDUX_DEVTOOLS_EXTENSION__"]
+  ? window["__REDUX_DEVTOOLS_EXTENSION__"]()
   : f => f;
 
 export function createAppStore(): Store<AppState> {
   return createStore<AppState, any, any, any>(
     reducer,
-    /*     compose(devtools), */
-    applyMiddleware(logger)
+    compose(devtools)
+    /*   applyMiddleware(logger) */
   );
 }
 
