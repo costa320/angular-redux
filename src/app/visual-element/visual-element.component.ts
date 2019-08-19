@@ -18,6 +18,6 @@ export class VisualElementComponent {
 
   readState() {
     const State = this.store.getState();
-    this.counter = State.counter.currentValuen;
+    this.counter = State.counter.currentValue;
   }
 }
