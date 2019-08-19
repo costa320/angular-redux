@@ -3,7 +3,7 @@ import { Component, Inject } from "@angular/core";
 import { Store } from "redux";
 import { AppStore } from "../redux/app.store";
 import { AppState } from "../redux/app.state";
-import * as CounterActions from "../redux/actions/counter.actions"; /* CounterActions.increment(); CounterActions.decrement() */
+import * as CounterActions from "../redux/counter/counter.actions"; /* CounterActions.increment(); CounterActions.decrement() */
 
 @Component({
   selector: "app-control-froms",
@@ -14,10 +14,12 @@ export class ControlFromsComponent {
   constructor(@Inject(AppStore) private store: Store<AppState>) {}
 
   increment() {
-    this.store.dispatch(CounterActions.increment());
+    /* increment by +1 */
+    this.store.dispatch(CounterActions.IncrementCounter(1));
   }
 
   decrement() {
-    this.store.dispatch(CounterActions.decrement());
+    /* decrement by -1 */
+    this.store.dispatch(CounterActions.DecrementCounter(1));
   }
 }

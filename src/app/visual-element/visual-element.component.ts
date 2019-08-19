@@ -10,15 +10,14 @@ import { AppState } from "../redux/app.state";
   styleUrls: ["./visual-element.component.scss"]
 })
 export class VisualElementComponent {
-  counter: number;
+  counter = 0;
 
   constructor(@Inject(AppStore) private store: Store<AppState>) {
     store.subscribe(() => this.readState());
-    this.readState();
   }
 
   readState() {
-    const state: AppState = this.store.getState() as AppState;
-    this.counter = state.counter;
+    const State = this.store.getState();
+    this.counter = State.counter.currentValuen;
   }
 }
